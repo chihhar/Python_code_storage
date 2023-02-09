@@ -1,0 +1,11 @@
+import numpy as np
+def main():
+  A =np.random.rand(3,3)#3*3のランダム行列 A=UWV 
+  U,S,V = np.linalg.svd(A)#行列Aを特異値分解
+  Sinv=np.diag(1/S)#Sinv=diag(1/sigma1,...,1/sigman)
+  Ainv=np.matmul(np.matmul(V.T,Sinv),U.T)#Ainv=V.T*Sinv*U.T
+  print("A=\n"+str(A))
+  print("A_inv from original code=\n"+str(Ainv))
+  print("A_inv from library=\n"+str(np.linalg.inv(A)))
+if __name__ =='__main__':
+  main()
